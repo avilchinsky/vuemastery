@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Product App</title>
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
+<div class="nav-bar"></div>
 
 <div id="app">
-    <h1>{{ product + '1234' }} goes here</h1>
+    <div class="product">
+        <div class="product-image">
+            <img width="500" v-bind:src="image" alt="">
+        </div>
+    </div>
+    <div class="product-info">
+        <h1>{{ product }} goes here</h1>
+        <p v-show="inStock">In Stock</p>
+        <p v-show="!inStock">Out of stock</p>
+
+        <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+
+        <ul>
+            <li v-for="variant in variants">
+                <b>{{ variant.id }}</b>
+                <i>{{ variant.color }}</i>
+            </li>
+        </ul>
+    </div>
 </div>
 
-<!-- production version, optimized for size and speed -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="main.js"></script>
 
 </body>
